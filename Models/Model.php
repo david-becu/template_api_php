@@ -10,8 +10,12 @@ class Model extends Db
 
     // Instance de Db
     private $db;
+    
+    // ================ Create
+    
 
-    // Read
+
+    // ================ Read
     public function findAll()
     {
         $query = $this->requete('SELECT * FROM ' . $this->table);
@@ -37,6 +41,11 @@ class Model extends Db
         // On exécute la requête
         return $this->requete("SELECT * FROM {$this->table} WHERE $liste_champs", $valeurs)->fetchAll();
     }
+
+public function find(int $id)
+{
+    return $this->requete("SELECT * FROM {$this->table} WHERE id = $id")->fetch();
+}
 
     public function requete(string $sql, array $attributs = null)
     {
